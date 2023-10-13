@@ -1,0 +1,14 @@
+services:
+    # SQL server for structured data
+    onibus_db:
+        image: timescale/timescaledb:latest-pg13
+        environment:
+            POSTGRES_PASSWORD_FILE: /run/secrets/psql_password
+   
+    onibus:
+        build: .
+
+
+secrets:
+    psql_password:
+        file: ./secrets/psql_password
